@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhang.mapper.NewsMapper" >
+  <resultMap id="BaseResultMap" type="com.zhang.pojo.News" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tid" property="tid" jdbcType="INTEGER" />
+    <result column="ncontent" property="ncontent" jdbcType="VARCHAR" />
+    <result column="nname" property="nname" jdbcType="VARCHAR" />
+    <result column="ntime" property="ntime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <select id="Arraylist" resultMap="BaseResultMap">
+    select * from news
+  </select>
+
+  <delete id="delete" parameterType="java.lang.Integer">
+    delete from news where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <select id="findById" resultType="com.zhang.pojo.News" parameterType="java.lang.Integer">
+    select * from news where id=#{id}
+  </select>
+
+  <update id="update" parameterType="com.zhang.pojo.News" >
+    update news
+    set ntype = #{ntype,jdbcType=VARCHAR},
+      ncontent = #{ncontent,jdbcType=VARCHAR},
+      nname = #{nname,jdbcType=VARCHAR},
+      ntime = #{ntime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="add" parameterType="com.zhang.pojo.News" >
+    insert into news (id, ntype, ncontent,
+      nname, ntime)
+    values (#{id,jdbcType=INTEGER}, #{ntype,jdbcType=VARCHAR}, #{ncontent,jdbcType=VARCHAR},
+      #{nname,jdbcType=VARCHAR}, #{ntime,jdbcType=TIMESTAMP})
+  </insert>
+</mapper>

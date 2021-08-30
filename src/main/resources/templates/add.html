@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/add}" method="post">
+    <table border="1" align="center" cellpadding="20" cellspacing="0">
+        <tr align="center"><td colspan="2">新闻录入</td></tr>
+        <tr>
+            <td>新闻标题</td>
+            <td><input type="text" name="ntype" id="ntype" ></td>
+        </tr>
+        <tr>
+            <td>新闻内容</td>
+            <td><input type="text" name="ncontent" id="ncontent">
+            </td>
+        </tr>
+        <tr>
+            <td>记录人</td>
+            <td><input type="text"  name="nname" id="nname" ></td>
+        </tr>
+        </tr>
+        <tr align="center">
+            <td colspan="2"><input type="submit" onclick="return add()"  value="确定">
+                <a th:href="@{/select}">返回</a>
+            </td>
+
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>

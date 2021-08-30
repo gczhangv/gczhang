@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:pth="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻列表</title>
+</head>
+<body>
+<table border="1" cellpadding="10" cellspacing="0" align="center">
+    <tr align="center"><th align="center" colspan="11">欢迎<span></span>登录</th></tr>
+    <tr>
+        <th>新闻编号</th>
+        <th>新闻标题</th>
+        <th>新闻内容</th>
+        <th>记录人</th>
+        <th>记录时间</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="v : ${Array}">
+        <td th:text="${v.id}"></td>
+        <td th:text="${v.ntype}"></td>
+        <td th:text="${v.ncontent}"></td>
+        <td th:text="${v.nname}"></td>
+        <td th:text="${#dates.format(v.ntime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td>
+            <a th:href="@{/updateById(id=${v.id})}">新闻编辑</a>
+            <a th:href="@{/delete(id=${v.id})}" onclick="return confirm('你确定删除?')">删除</a>
+        </td>
+    <tr align="center">
+    <td colspan="11">
+        <a th:href="@{/addlist}">新闻录入</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a th:href="@{/login}">退出</a>
+    </td>
+    </tr>
+    </tr>
+
+</table>
+</form>
+</body>
+</html>
